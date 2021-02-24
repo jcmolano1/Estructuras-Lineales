@@ -11,7 +11,7 @@ std::list<Autor> autores;
 
 //clang++ -std=c++11 -stdlib=libc++ main.cpp -o main
 
-void agregarCanciones(std::string nombrecancion,std::string autorcancion,std::string genero,std::string album,std::string year)
+bool agregarCanciones(std::string nombrecancion,std::string autorcancion,std::string genero,std::string album,std::string year)
 {
   bool guardar=false;
   std::list<Autor>::iterator aiT;
@@ -49,9 +49,9 @@ void agregarCanciones(std::string nombrecancion,std::string autorcancion,std::st
   {
     guardar=piT->agregarCancion(nombrecancion,genero,album,year);
   }
-  //return guardar;
+  return guardar;
 }
-void lectura_archivo(std::string archivo)
+bool lectura_archivo(std::string archivo)
 {
   std::ifstream myfile (archivo);
   std::string line;
@@ -77,7 +77,7 @@ void lectura_archivo(std::string archivo)
        {
          std::cout<<"Unable to open file";
        }
-       //return 0;
+       return 0;
 }
 void ListaAutores()
 {
