@@ -11,8 +11,7 @@ std::list<Autor> autores;
 
 //clang++ -std=c++11 -stdlib=libc++ main.cpp -o main
 
-
-bool agregarCanciones(std::string nombrecancion,std::string autorcancion,std::string genero,std::string album,std::string year)
+void agregarCanciones(std::string nombrecancion,std::string autorcancion,std::string genero,std::string album,std::string year)
 {
   bool guardar=false;
   std::list<Autor>::iterator aiT;
@@ -50,9 +49,9 @@ bool agregarCanciones(std::string nombrecancion,std::string autorcancion,std::st
   {
     guardar=piT->agregarCancion(nombrecancion,genero,album,year);
   }
-  return guardar;
+  //return guardar;
 }
-bool lectura_archivo(std::string archivo)
+void lectura_archivo(std::string archivo)
 {
   std::ifstream myfile (archivo);
   std::string line;
@@ -61,7 +60,7 @@ bool lectura_archivo(std::string archivo)
          while ( getline (myfile,line) )
          {
            std::getline(myfile,line);
-           std::cout<<line<<std::endl;
+           //std::cout<<line<<std::endl;
            std::vector<std::string>linea;
            linea.clear();
            std::stringstream data (line);
@@ -72,12 +71,13 @@ bool lectura_archivo(std::string archivo)
            agregarCanciones(linea[0],linea[1],linea[2],linea[3],linea[4]);
          }
          myfile.close();
+         std::cout<<"Lectura de Fichero Exitosa"<<std::endl;
        }
        else
        {
          std::cout<<"Unable to open file";
        }
-       return 0;
+       //return 0;
 }
 void ListaAutores()
 {
@@ -191,6 +191,8 @@ int main ( ) {
     std::cout<<std::endl;
     switch (x)
     {
+      case 0:
+        break;
       case 1:
         ListaAutores();
         break;
